@@ -174,9 +174,6 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
  
 void loop() {
-  if (WiFi.status() != WL_CONNECTED){
-  WiFi.begin(ssid, password);
-  }
   if (!client.connected()) {
         reconnect();
   }
