@@ -13,3 +13,5 @@ Code for notifications via mqtt with Esp8266 and 8x8 max7219 driven led matrix
 - First realise has only youtube and gmail icons.This web its nice for drawing new ones: 
   https://xantorohara.github.io/led-matrix-editor/
 - It works with one or more displays , eventhow the code is now working with only one.
+- You are free to use it and edit it as you want , also i'll upload any provided change if it 
+  performs better in any way.
