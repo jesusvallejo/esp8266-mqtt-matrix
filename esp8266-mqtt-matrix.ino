@@ -116,7 +116,7 @@ void reconnect() {
       // Once connected, publish an announcement...
       
       // ... and resubscribe
-      client.subscribe("cmnd/sonoffA");
+      client.subscribe(tp);
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
