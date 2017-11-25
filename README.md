@@ -4,6 +4,7 @@ Code for notifications via mqtt with Esp8266 and 8x8 max7219 driven led matrix
 
 - You will need an Esp8266 board , five jumpers and an 8x8 max7219 driven led matrix.
 - I use it with a mosquitto server, openhab 2.0 (with openhab cloud), and ifttt.
+- Dont forget to install openhab cloud bidding , enable your items through the PAPER UI , and connect it to ifttt.
 - My code is not storage efficient (pretty noob with c++),be aware it could not fit your device.
 - This code uses librarys that are not mine , all credits to the developers that created them. Such as :
         https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266WiFi                                                               
@@ -15,7 +16,7 @@ Code for notifications via mqtt with Esp8266 and 8x8 max7219 driven led matrix
 - It works with one or more displays , eventhough the code is now working with only one.
 - You are free to use it and edit it as you want , also i'll upload any provided change if it 
   performs better in any way.
-- Schematics of the connection 
+- Schematics of the connection:
   
         Display<+++++>esp<---->wifi<----->mqtt + openhab 
                                                      |
