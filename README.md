@@ -12,13 +12,13 @@ Code for notifications via mqtt with Esp8266 and 8x8 max7219 driven led matrix
 
 - First release has only youtube and gmail icons.This web its nice for drawing new ones:                                                   
   https://xantorohara.github.io/led-matrix-editor/
-- It works with one or more displays , eventhow the code is now working with only one.
+- It works with one or more displays , eventhough the code is now working with only one.
 - You are free to use it and edit it as you want , also i'll upload any provided change if it 
   performs better in any way.
-- schematic of the connection 
+- Schematics of the connection 
   
-        esp<---->wifi<----->mqtt + openhab 
-                                        |---------> internet(openhab cloud)<-----> ifttt
+        Display<+++++>esp<---->wifi<----->mqtt + openhab 
+                                             |---------> internet(openhab cloud)<-----> ifttt
                               
 - You will have to edit this parameters to suit your configuration.
       
