@@ -1,0 +1,8 @@
+rule "gmail alert"
+when
+Item gmail_op received command ON
+then
+
+publish("broker", "cmnd/EspNotifier", "gmail")//change topic as you wish
+
+end

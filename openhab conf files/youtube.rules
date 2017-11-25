@@ -1,0 +1,9 @@
+
+rule "youtube alert"
+when
+Item youtube_op received command ON
+then
+
+publish("broker", "cmnd/EspNotifier", "youtube")//change topic as you wish
+
+end
