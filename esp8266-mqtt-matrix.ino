@@ -44,7 +44,7 @@ byte you2[] = {// simbolo youtube arriba
   B01111110,
   B00000000};
   
-  byte gmail[] = {// simbolo gmail
+  byte gmail1[] = {// simbolo gmail
   B00000000,
   B11000011,
   B11100111,
@@ -78,7 +78,7 @@ void gmailGO()// convertimos gmail (array de byte) a lineas del panel
 {
   for (int i = 0; i < 8; i++)  
   {
-    lc.setRow(0,i,gmail[i]);
+    lc.setRow(0,i,gmail1[i]);
     
   }
 }
@@ -127,7 +127,7 @@ void reconnect() {
   }
 }
 void youtube(){
-	if (k == "youtube" ) 
+  if (k == "youtube" ) 
 {
   Serial.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxx");
   for (int i=0; i <= 4; i++){
@@ -138,10 +138,10 @@ void youtube(){
    }
   lc.clearDisplay(0);
 }
-	
+  
 }
 void gmail(){
-	if (k == "gmail" )  
+  if (k == "gmail" )  
 {
   Serial.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxx");
   for (int i=0; i <= 5; i++){
@@ -152,30 +152,30 @@ void gmail(){
    }
   lc.clearDisplay(0);
 }
-	
+  
 }
  
 void callback(char* topic, byte* payload, unsigned int length) {
-	k="";
-	Serial.print("Message arrived in topic: ");
-	Serial.println(topic);
+  k="";
+  Serial.print("Message arrived in topic: ");
+  Serial.println(topic);
   
-	for (int i = 0; i < length; i++) {
-		k = k + (char)payload[i];
-	}
-	Serial.println(k);
-	youtube();
-	gmail();
-	Serial.println(" Command: ");
-	Serial.println(k);
-	Serial.println();
-	Serial.println("-----------------------");
+  for (int i = 0; i < length; i++) {
+    k = k + (char)payload[i];
+  }
+  Serial.println(k);
+  youtube();
+  gmail();
+  Serial.println(" Command: ");
+  Serial.println(k);
+  Serial.println();
+  Serial.println("-----------------------");
 }
 
  
 void loop() {
   if (WiFi.status() != WL_CONNECTED){
-	WiFi.begin(ssid, password);
+  WiFi.begin(ssid, password);
   }
   if (!client.connected()) {
         reconnect();
