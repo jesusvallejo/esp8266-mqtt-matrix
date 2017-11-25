@@ -17,7 +17,7 @@ Code for notifications via mqtt with Esp8266 and 8x8 max7219 driven led matrix
   performs better in any way.
 - schematic of the connection 
   
-esp<---->wifi<----->mqtt + openhab
-                         |                                                                                                               
-                         |                                                                             
+esp<---->wifi<----->mqtt + openhab                                                                                                         
+                         |                                                                                                                 
+                         |                                                                                                                 
                internet(openhab cloud)<-----> ifttt
