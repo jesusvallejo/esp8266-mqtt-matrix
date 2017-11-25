@@ -17,5 +17,17 @@ Code for notifications via mqtt with Esp8266 and 8x8 max7219 driven led matrix
   performs better in any way.
 - schematic of the connection 
   
-esp<---->wifi<----->mqtt + openhab 
-                              |---------> internet(openhab cloud)<-----> ifttt
+        esp<---->wifi<----->mqtt + openhab 
+                                        |---------> internet(openhab cloud)<-----> ifttt
+                              
+- You will have to edit this parameters to suit your configuration.
+      
+      const char* ssid = "WLAN_XXXX"; // red wifi
+      const char* password =  "PASSWORD"; // contraseña
+      const char* mqttServer = "server.lan/"; // direccion servidor mqtt
+      const int mqttPort = 1883; // puerto de escucha del servidor mqtt
+      const char* mqttUser = "USER"; // usuario mqtt
+      const char* mqttPassword = "USERPASS"; // contraseña mqtt
+      const char* tp = "cmnd/EspNotifier"; // hilo de sub/pub
+      LedControl lc=LedControl(14,12,13,1); // instancia la conexion con el panel ( pin_gpio_DIN,pin_gpio_CLK,pin_gpio_CS,numero_de_paneles)
+
