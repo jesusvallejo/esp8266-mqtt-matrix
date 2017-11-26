@@ -1,7 +1,6 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 #include "LedControl.h"
-#include <pgmspace.h>
 #include "MaxMatrix.h"
 #include "pgmspace.h"
 
@@ -17,6 +16,16 @@ const int mqttPort = 1883; // puerto de escucha del servidor mqtt
 const char* mqttUser = "jesus"; // usuario mqtt
 const char* mqttPassword = "cometa1997"; // contraseña mqtt
 const char* tp = "cmnd/sonoffA"; // hilo de sub/pub
+int data = 14;    // DIN pin of MAX7219 module
+int load = 13;    // CS pin of MAX7219 module
+int clock = 12;  // CLK pin of MAX7219 module
+int maxInUse = 1;  //how many MAX7219 are connected
+MaxMatrix m(data, load, clock, maxInUse); // define Library
+byte buffer[10];
+char preparado[] = "  Preparado  ";  // Scrolling Text
+String k=""; // instancia la conversion de byte* a string (linea )
+LedControl lc=LedControl(data,clock,load,maxInUse); // instancia la conexion con el panel ( pin_gpio_DIN,pin_gpio_CLK,pin_gpio_CS,numero_de_paneles)
+unsigned long delayTime=900; // delay para transiciones
 
 PROGMEM const unsigned char CH[] = {
 3, 8, B00000000, B00000000, B00000000, B00000000, B00000000, // space
@@ -116,23 +125,9 @@ PROGMEM const unsigned char CH[] = {
 4, 8, B00001000, B00000100, B00001000, B00000100, B00000000, // ~
 };
 
-int data = 14;    // DIN pin of MAX7219 module
-int load = 13;    // CS pin of MAX7219 module
-int clock = 12;  // CLK pin of MAX7219 module
 
-int maxInUse = 1;  //how many MAX7219 are connected
 
-MaxMatrix m(data, load, clock, maxInUse); // define Library
 
-byte buffer[10];
-
-char string1[] = "  Preparado  ";  // Scrolling Text
-
-String k=""; // instancia la conversion de byte* a string (linea )
-
-LedControl lc=LedControl(14,12,13,1); // instancia la conexion con el panel ( pin_gpio_DIN,pin_gpio_CLK,pin_gpio_CS,numero_de_paneles)
-
-unsigned long delayTime=900; // delay para transiciones
 
 byte you1[] = { // simbolo youtube abajo
   B00000000,
@@ -214,12 +209,16 @@ void printStringWithShift(char* s, int shift_speed){
     s++;
   }
 }
+ //////////////////////////////////////////////////////////////////////////////
+/////////////////////////// setup ////////////////////////////////////////////
+
+
  
 void setup() {
  
   Serial.begin(115200); // Iniciamos serial
-  m.init(); // module MAX7219
-  m.setIntensity(5); // LED Intensity 0-15
+  m.init(); // module MAX7219 
+  m.setIntensity(10); // LED Intensity 0-15
   lc.shutdown(0,false);    //Iniciamos la matriz led #1  
   lc.setIntensity(0,10);    //Intensidad de los led en la matriz #1
   lc.clearDisplay(0);      //Apagamos todos los led de la matriz #1
@@ -236,9 +235,21 @@ void setup() {
  
   reconnect(); // nos conectamos al server
   m.shiftLeft(false, true);
-  printStringWithShift(string1, 100);  // Send scrolling Text
-
+  printStringWithShift(preparado, 100);  // Send scrolling Text
+  lc.clearDisplay(0);
 }
+
+
+
+
+ /////////////////////////// setup ////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
+
+ /////////////////////////////////////////////////////////////////////////////
+//////////////// reconnect //////////////////////////////////////////////////
+
+
 void reconnect() {
   // Loop until we're reconnected
   while (!client.connected()) {
@@ -262,6 +273,14 @@ void reconnect() {
     }
   }
 }
+
+ /////////////// reconnect //////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+
+
+ //////////////////////////////////////////////////////////
+////////////// youtube ///////////////////////////////////
+
 void youtube(){
   if (k == "youtube" ) 
 {
@@ -274,8 +293,15 @@ void youtube(){
    }
   lc.clearDisplay(0);
 }
-  
 }
+ ////////////// youtube /////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+
+
+
+ //////////////////////////////////////////////////////////////////////////
+////////////////////// gmail /////////////////////////////////////////////
+
 void gmail(){
   if (k == "gmail" )  
 {
@@ -290,8 +316,20 @@ void gmail(){
 }
   
 }
- 
-void callback(char* topic, byte* payload, unsigned int length) {
+
+
+ ///////////////////// gmail /////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+
+
+ ////////////////////////////////////////////////////////////////////////
+/////////////////////// callback ///////////////////////////////////////
+
+
+
+
+void callback(char* topic, byte* payload, unsigned int length) 
+{
   k="";
   Serial.print("Message arrived in topic: ");
   Serial.println(topic);
@@ -305,10 +343,20 @@ void callback(char* topic, byte* payload, unsigned int length) {
   Serial.println(" Command: ");
   Serial.println(k);
   Serial.println();
-  Serial.println("-----------------------");
+  Serial.println("-----------------------"); 
 }
 
- 
+
+
+
+ /////////////////////// callback ///////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////
+/////////////////////// loop //////////////////////////////////////////
+
+
+
 void loop() {
   if (WiFi.status() != WL_CONNECTED){
   WiFi.begin(ssid, password);
@@ -318,3 +366,11 @@ void loop() {
   }
   client.loop();
 }
+
+
+
+ ////////////////////// loop //////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+
+
