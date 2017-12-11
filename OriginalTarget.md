@@ -1,7 +1,6 @@
 #Very first goal:
 
-    My original idea was to make the visual notification of a new email or new telegram message, so while im coding for uni(yeah!) or studing, 
-  i can know whether i got a good mark on Algorithms and Data Structure,
+  My original idea was to make the visual notification of a new email or new telegram message, so while im coding for uni(yeah!) or   studing, i can know whether i got a good mark on Algorithms and Data Structure,
   or if my brother is waiting outside home waiting me to come and open the door(i like to listen music, it keeps the thinking rhythm up).
   
   So i decided to integrated with my openhab iot system (controls my bedroom lights), its ok like that but i thought it would be cool to display messages to my brother(lol).
