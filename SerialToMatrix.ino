@@ -3,9 +3,7 @@
 # include "stdio.h"
 
 
-String myName;   //Declare a String variable to hold your name
-int age;         //Declare an Int variable to hold your age
-float height;
+
 int data = 14;    // DIN pin of MAX7219 module
 int load = 13;    // CS pin of MAX7219 module
 int clock = 12;  // CLK pin of MAX7219 module
