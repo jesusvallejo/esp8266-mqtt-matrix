@@ -9,12 +9,12 @@
 /////////////             ///////////////
 
 //////////// constantes  ///////////////
-const char* ssid = "WLAN_2DB1"; // red wifi
-const char* password =  "913458620abcd"; // contraseña
-const char* mqttServer = "192.168.1.2"; // direccion servidor mqtt
+const char* ssid = "WLAN_xxxx"; // red wifi
+const char* password =  "xxxxxxxx"; // contraseña
+const char* mqttServer = "192.168.1.x"; // direccion servidor mqtt
 const int mqttPort = 1883; // puerto de escucha del servidor mqtt
-const char* mqttUser = "jesus"; // usuario mqtt
-const char* mqttPassword = "cometa1997"; // contraseña mqtt
+const char* mqttUser = "xxxxxx"; // usuario mqtt
+const char* mqttPassword = "xxxxxxx"; // contraseña mqtt
 const char* tp = "cmnd/sonoffA"; // hilo de sub/pub
 int data = 14;    // DIN pin of MAX7219 module
 int load = 13;    // CS pin of MAX7219 module
