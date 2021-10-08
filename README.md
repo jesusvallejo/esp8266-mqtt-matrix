@@ -60,7 +60,7 @@ Code for notifications via mqtt with Esp8266 and 8x8 max7219 driven led matrix
          int clock = 12;  // CLK pin of MAX7219 module
          int maxInUse = 1;  //how many MAX7219 are connected
          
-- Shecheme
+- Scheme
         
         Serial:
         Please enter something: 
